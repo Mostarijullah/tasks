@@ -116,6 +116,90 @@ Resource limits:
 </pre>
 
 
+<pre><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> template.openshift.io/v1
+<font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> Template
+<font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+  <font color="#34E2E2"><b>creationTimestamp</b></font><font color="#FFD7D7">:</font> <font color="#AD7FA8">null</font>
+  <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> project-request
+<font color="#34E2E2"><b>objects</b></font><font color="#FFD7D7">:</font>
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> project.openshift.io/v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> Project
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>annotations</b></font><font color="#FFD7D7">:</font>
+      <font color="#34E2E2"><b>openshift.io/description</b></font><font color="#FFD7D7">:</font> ${PROJECT_DESCRIPTION}
+      <font color="#34E2E2"><b>openshift.io/display-name</b></font><font color="#FFD7D7">:</font> ${PROJECT_DISPLAYNAME}
+      <font color="#34E2E2"><b>openshift.io/requester</b></font><font color="#FFD7D7">:</font> ${PROJECT_REQUESTING_USER}
+    <font color="#34E2E2"><b>creationTimestamp</b></font><font color="#FFD7D7">:</font> <font color="#AD7FA8">null</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> ${PROJECT_NAME}
+    <font color="#34E2E2"><b>labels</b></font><font color="#FFD7D7">:</font>
+      <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> ${PROJECT_NAME}
+  <font color="#34E2E2"><b>spec</b></font><font color="#FFD7D7">:</font> <font color="#FFD7D7">{}</font>
+  <font color="#34E2E2"><b>status</b></font><font color="#FFD7D7">:</font> <font color="#FFD7D7">{}</font>
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> rbac.authorization.k8s.io/v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> RoleBinding
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>creationTimestamp</b></font><font color="#FFD7D7">:</font> <font color="#AD7FA8">null</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> admin
+    <font color="#34E2E2"><b>namespace</b></font><font color="#FFD7D7">:</font> ${PROJECT_NAME}
+  <font color="#34E2E2"><b>roleRef</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>apiGroup</b></font><font color="#FFD7D7">:</font> rbac.authorization.k8s.io
+    <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> ClusterRole
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> admin
+  <font color="#34E2E2"><b>subjects</b></font><font color="#FFD7D7">:</font>
+  <font color="#FCE94F">- </font><font color="#34E2E2"><b>apiGroup</b></font><font color="#FFD7D7">:</font> rbac.authorization.k8s.io
+    <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> User
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> ${PROJECT_ADMIN_USER}
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> networking.k8s.io/v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> NetworkPolicy
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> allow-from-openshift-ingress
+  <font color="#34E2E2"><b>spec</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>podSelector</b></font><font color="#FFD7D7">:</font> <font color="#FFD7D7">{}</font>
+                                                                                                                                     1,21          Top
+</pre>
+
+<pre><font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> rbac.authorization.k8s.io/v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> RoleBinding
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>creationTimestamp</b></font><font color="#FFD7D7">:</font> <font color="#AD7FA8">null</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> admin
+    <font color="#34E2E2"><b>namespace</b></font><font color="#FFD7D7">:</font> ${PROJECT_NAME}
+  <font color="#34E2E2"><b>roleRef</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>apiGroup</b></font><font color="#FFD7D7">:</font> rbac.authorization.k8s.io
+    <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> ClusterRole
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> admin
+  <font color="#34E2E2"><b>subjects</b></font><font color="#FFD7D7">:</font>
+  <font color="#FCE94F">- </font><font color="#34E2E2"><b>apiGroup</b></font><font color="#FFD7D7">:</font> rbac.authorization.k8s.io
+    <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> User
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> ${PROJECT_ADMIN_USER}
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> networking.k8s.io/v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> NetworkPolicy
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> allow-from-openshift-ingress
+  <font color="#34E2E2"><b>spec</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>podSelector</b></font><font color="#FFD7D7">:</font> <font color="#FFD7D7">{}</font>
+    <font color="#34E2E2"><b>ingress</b></font><font color="#FFD7D7">:</font>
+    <font color="#FCE94F">- </font><font color="#34E2E2"><b>from</b></font><font color="#FFD7D7">:</font>
+      <font color="#FCE94F">- </font><font color="#34E2E2"><b>namespaceSelector</b></font><font color="#FFD7D7">:</font>
+          <font color="#34E2E2"><b>matchLabels</b></font><font color="#FFD7D7">:</font>
+            <font color="#34E2E2"><b>network.openshift.io/policy-group</b></font><font color="#FFD7D7">:</font> ingress
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> networking.k8s.io/v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> NetworkPolicy
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> allow-same-namespace
+  <font color="#34E2E2"><b>spec</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>podSelector</b></font><font color="#FFD7D7">:</font> <font color="#FFD7D7">{}</font>
+    <font color="#34E2E2"><b>ingress</b></font><font color="#FFD7D7">:</font>
+    <font color="#FCE94F">- </font><font color="#34E2E2"><b>from</b></font><font color="#FFD7D7">:</font>
+      <font color="#FCE94F">- </font><font color="#34E2E2"><b>podSelector</b></font><font color="#FFD7D7">:</font> <font color="#FFD7D7">{}</font>
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> LimitRange
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> ${PROJECT_NAME}-resource-limits
+  <font color="#34E2E2"><b>spec</b></font><font color="#FFD7D7">:</font>
+                                                                                                                                     25,21         43%
+</pre>
+
 
 <pre><font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> networking.k8s.io/v1
   <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> NetworkPolicy
