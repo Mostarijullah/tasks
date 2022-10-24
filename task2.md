@@ -1,41 +1,4 @@
 <pre>
-Use &quot;oc adm policy &lt;command&gt; --help&quot; for more information about a given command.
-Use &quot;oc adm options&quot; for a list of global command-line options (applies to all commands).
-[student@workstation ~]$ oc adm policy add-cluster-role-to-user cluster-admin admin
-Error from server (Forbidden): clusterrolebindings.rbac.authorization.k8s.io is forbidden: User &quot;linda&quot; cannot list resource &quot;clusterrolebindings&quot; in API group &quot;rbac.authorization.k8s.io&quot; at the cluster scope
-[student@workstation ~]$ oc login -u kubeadmin -p ${RHT_OCP4_KUBEADM_PASSWD}     https://api.ocp4.example.com:6443
-Login successful.
-
-You have access to 59 projects, the list has been suppressed. You can list all projects with &apos; projects&apos;
-
-Using project &quot;default&quot;.
-[student@workstation ~]$ oc adm policy add-cluster-role-to-user cluster-admin admin
-clusterrole.rbac.authorization.k8s.io/cluster-admin added: &quot;admin&quot;
-[student@workstation ~]$ oc login -u admin -p redhat
-Login successful.
-
-You have access to 59 projects, the list has been suppressed. You can list all projects with &apos; projects&apos;
-
-Using project &quot;default&quot;.
-[student@workstation ~]$ oc delete secrets kubeadmin -n kube-system
-secret &quot;kubeadmin&quot; deleted
-[student@workstation ~]$ oc adm groups new admins
-group.user.openshift.io/admins created
-[student@workstation ~]$ oc adm groups new developers
-group.user.openshift.io/developers created
-[student@workstation ~]$ oc adm groups new viewers
-group.user.openshift.io/viewers created
-[student@workstation ~]$ oc adm groups add-users admins admin
-group.user.openshift.io/admins added: &quot;admin&quot;
-[student@workstation ~]$ oc adm groups add-users admins anna
-group.user.openshift.io/admins added: &quot;anna&quot;
-[student@workstation ~]$ oc adm groups add-users developers linda 
-group.user.openshift.io/developers added: &quot;linda&quot;
-[student@workstation ~]$ oc adm groups add-users developers developer
-group.user.openshift.io/developers added: &quot;developer&quot;
-[student@workstation ~]$ oc adm groups add-users viewers lisa
-group.user.openshift.io/viewers added: &quot;lisa&quot;
-[student@workstation ~]$ clear
 
 [student@workstation ~]$ oc describe clusterrole.rbac | grep ^name
 [student@workstation ~]$ oc describe clusterrole.rbac
