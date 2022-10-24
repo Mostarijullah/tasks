@@ -114,3 +114,47 @@ Resource limits:
 	Container	cpu		-	2	100m		2		-
 [student@workstation ~]$ 
 </pre>
+
+
+
+<pre><font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> networking.k8s.io/v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> NetworkPolicy
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> allow-same-namespace
+  <font color="#34E2E2"><b>spec</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>podSelector</b></font><font color="#FFD7D7">:</font> <font color="#FFD7D7">{}</font>
+    <font color="#34E2E2"><b>ingress</b></font><font color="#FFD7D7">:</font>
+    <font color="#FCE94F">- </font><font color="#34E2E2"><b>from</b></font><font color="#FFD7D7">:</font>
+      <font color="#FCE94F">- </font><font color="#34E2E2"><b>podSelector</b></font><font color="#FFD7D7">:</font> <font color="#FFD7D7">{}</font>
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> LimitRange
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> ${PROJECT_NAME}-resource-limits
+  <font color="#34E2E2"><b>spec</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>limits</b></font><font color="#FFD7D7">:</font>
+    <font color="#FCE94F">- </font><font color="#34E2E2"><b>type</b></font><font color="#FFD7D7">:</font> Container
+      <font color="#34E2E2"><b>max</b></font><font color="#FFD7D7">:</font>
+        <font color="#34E2E2"><b>cpu</b></font><font color="#FFD7D7">:</font> <font color="#AD7FA8">2</font>
+        <font color="#34E2E2"><b>memory</b></font><font color="#FFD7D7">:</font> 2Gi
+      <font color="#34E2E2"><b>defaultRequest</b></font><font color="#FFD7D7">:</font>
+        <font color="#34E2E2"><b>cpu</b></font><font color="#FFD7D7">:</font> 100m
+        <font color="#34E2E2"><b>memory</b></font><font color="#FFD7D7">:</font> 100Mi
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>apiVersion</b></font><font color="#FFD7D7">:</font> v1
+  <font color="#34E2E2"><b>kind</b></font><font color="#FFD7D7">:</font> ResourceQuota
+  <font color="#34E2E2"><b>metadata</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> ${PROJECT_NAME}-compute-resources
+  <font color="#34E2E2"><b>spec</b></font><font color="#FFD7D7">:</font>
+    <font color="#34E2E2"><b>hard</b></font><font color="#FFD7D7">:</font>
+      <font color="#34E2E2"><b>pods</b></font><font color="#FFD7D7">:</font> <font color="#AD7FA8">&quot;20&quot;</font>
+      <font color="#34E2E2"><b>requests.cpu</b></font><font color="#FFD7D7">:</font> <font color="#AD7FA8">&quot;2&quot;</font>
+      <font color="#34E2E2"><b>requests.memory</b></font><font color="#FFD7D7">:</font> 1Gi
+      <font color="#34E2E2"><b>limits.cpu</b></font><font color="#FFD7D7">:</font> <font color="#AD7FA8">&quot;4&quot;</font>
+      <font color="#34E2E2"><b>limits.memory</b></font><font color="#FFD7D7">:</font> 4Gi
+<font color="#34E2E2"><b>parameters</b></font><font color="#FFD7D7">:</font>
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> PROJECT_NAME
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> PROJECT_DISPLAYNAME
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> PROJECT_DESCRIPTION
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> PROJECT_ADMIN_USER
+<font color="#FCE94F">- </font><font color="#34E2E2"><b>name</b></font><font color="#FFD7D7">:</font> PROJECT_REQUESTING_USER
+&quot;template.yaml&quot; 83L, 1887C                                                                                                           76,21         Bot
+</pre>
