@@ -15,7 +15,7 @@ spec:
         deployment: linginx1
     spec:
       containers:
-      - image: docker.io/nginx
+      - image: docker.io/library/nginx
         name: linginx1
         ports:
         - containerPort: 8080
